@@ -1,0 +1,18 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# This is a bash script that allow you loop
+# thrue a list of phone numbers and send them
+# a message using the android app termux
+# (from f-droid). Recommend exetuing it using ssh
+# or scrcpy connection to the android device.
+#
+# arguments
+# $1;  message
+# $2*; numbers array
+
+echo "Sending following sms:"
+echo $1
+echo "to $# members."
+
+for number in "${@:2}"; do
+  termux-send-sms $1 -n "$number"
+done
