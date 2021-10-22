@@ -4,15 +4,15 @@
 # a message using the android app termux
 # (from f-droid). Recommend exetuing it using ssh
 # or scrcpy connection to the android device.
+# 
 #
 # arguments
-# $1;  message
+# $1;  message (use \n for new line)
 # $2*; numbers array
 
 echo "Sending following sms:"
 echo $1
-echo "to $# members."
 
 for number in "${@:2}"; do
-  termux-send-sms $1 -n "$number"
+  termux-sms-send -n "$number" $1
 done
